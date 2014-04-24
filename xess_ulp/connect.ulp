@@ -95,6 +95,11 @@ schematic(SCH)
 					// pin.contact.name = pin number on chip (e.g., "5" or "B13")
 					// pin.x, pin.y = (x,y) location of pin in schematic
 					// pin.angle = orientation of pin (0, 90, 180, 270)
+					if(debug)
+					{
+                        sprintf(tmp,"%s.%s:",P.name,pin.name);
+                        debug_text += tmp;
+                    }
 					
 					// skip any pin that doesn't even have a contact for connecting a net
 					if(!pin.contact)
@@ -128,6 +133,11 @@ schematic(SCH)
 					}
 
 					// connect this pin to the net
+					if(debug)
+					{
+                        sprintf(tmp,"draw_connection %s=>%s.\n",pin.name,net_name);
+                        debug_text += tmp;
+                    }
 					draw_connection(pin,net_name,strtol(net_class));
 				}
 			}

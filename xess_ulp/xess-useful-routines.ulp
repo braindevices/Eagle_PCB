@@ -429,7 +429,14 @@ string read_netlist(string netlist_file)
 		{
 			string net_parts[];
 			int signal_cnt = strsplit (net_parts, lines[n], '\''); // split the signal into parts
-
+            
+//             for (int _i=0;net_parts[_i];++_i)//add by Ling
+//             {
+//                 string _str;
+//                 sprintf(_str,"net_parts[%d]=%s",_i,net_parts[_i]);
+//                 dlgMessageBox(_str,"aroo","aree");
+//             }
+            
 			string part_name, part_pin;
 			if(!in_signal)
 			{

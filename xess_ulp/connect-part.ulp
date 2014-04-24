@@ -191,6 +191,7 @@ schematic(SCH)
 		{
 			if(regexcmp(net_name,N.name,0))
 				net[num_nets++] = N.name;
+				dlgMessageBox(N.name,"aroo","aree");
 		}
 	}
 
@@ -212,7 +213,9 @@ schematic(SCH)
 					// pin.contact.name = pin number on chip (e.g., "5" or "B13")
 					// pin.x, pin.y = (x,y) location of pin in schematic
 					// pin.angle = orientation of pin (0, 90, 180, 270)
-
+					string _r;
+					sprintf(_r,"num_nets=%3d, net_index=%3d ",num_nets,net_index);
+					dlgMessageBox(_r+P.name+" "+pin.name+ " "+I.gate.name,"aroo","aree");
 					if(net_index >= num_nets)
 					{
 						if(net_repeat)
@@ -223,12 +226,16 @@ schematic(SCH)
 
 					// skip any pin that doesn't even have a contact for connecting a net
 					if(!pin.contact)
+                        dlgMessageBox("pin has NO contact","aroo","aree");
 						continue;
 
 					// skip any pin that is already connected to a net
 					if(pin.net != "")
+					dlgMessageBox("pin has connected","aroo","aree");
 						continue;
-
+                    
+                    
+                    
 					if(pin_selection == DO_BUS)
 					{
 						if(strstr(I.gate.name,pin_name)==0)
@@ -254,6 +261,7 @@ schematic(SCH)
 							draw_connection(pin,net[net_index],0);
 							ppin[num_ppins++] = I.gate.name;
 							net_index++;
+							dlgMessageBox(I.gate.name+"=>"+net[net_index],"aroo","aree");
 						}
 					}
 				}
