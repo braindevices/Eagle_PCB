@@ -264,8 +264,10 @@ void draw_via(int start_layer, int end_layer, string net, real diameter, real dr
 //////////////////////////////////////////////////////////////////////////
 void draw_connection(UL_PIN pin, string net_name, int class)
 {
-	real connection_length = 0.1; // length of connection stub in inches
+	//real connection_length = 0.1; // length of connection stub in inches
+    real connection_length = 5; //the original 0.1 is too short for my sch, and it is diffinately not in inch
 	real label_separation = 0.035; // separation from label to net stub in inches
+	//real label_separation = 0.035*50; 
 	real x2 = -connection_length * u_per_inch;
 	real y2 = 0;
 	real lbl_x = -(connection_length + label_separation) * u_per_inch;
